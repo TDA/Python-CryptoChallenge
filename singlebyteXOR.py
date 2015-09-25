@@ -24,6 +24,11 @@ def singleByteXOR(a):
         c = fixedXOR(a, new_key2.encode('hex')).decode('hex')
         freq_of_letters.append(calculateFrequency(c, new_key2))
 
+    max_match = max(freq_of_letters)
+    return letters[freq_of_letters.index(max_match)]
+
+
 
 if __name__ == '__main__':
-    xor = singleByteXOR('1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736')
+    key = singleByteXOR('1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736')
+    print key, "is the key"
