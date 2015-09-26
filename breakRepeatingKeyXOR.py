@@ -8,17 +8,19 @@ def breakRepeatingKeyXOR():
 
 
 def calculateHammingDistance(str1, str2):
-    bin_str1  = ''.join(format(ord(x), 'b') for x in str1)
-    bin_str2 = ''.join(format(ord(x), 'b') for x in str2)
-    print bin_str2, bin_str1
+    # hamming distance is merely the xor of the strings
+    # first create equal length binary sequences, pad zeroes
+    # if not equal --> 8 digit binary code for each one
+    bin_str1  = ''.join('{0:08b}'.format(ord(x)) for x in str1)
+    bin_str2 = ''.join('{0:08b}'.format(ord(x)) for x in str2)
+
     bin_str1 = bytearray(bin_str1)
     bin_str2 = bytearray(bin_str2)
 
     sum = 0
     for char in zip(bin_str1, bin_str2):
-        print char
         sum += int(chr(char[0])) ^ int(chr(char[1]))
-    print sum
+    return sum
 
 
 if __name__ == '__main__':
@@ -26,6 +28,7 @@ if __name__ == '__main__':
     with open('level6.txt', 'r') as file:
         data = file.read()
         decoded_data = data.decode('base64')
-        calculateHammingDistance('this is a test', 'wokka wokka!!!')
+        # sum = calculateHammingDistance('this is a test', 'wokka wokka!!!')
+        # print sum
 
     breakRepeatingKeyXOR()
