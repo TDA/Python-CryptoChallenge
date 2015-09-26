@@ -24,11 +24,30 @@ def calculateHammingDistance(str1, str2):
 
 
 if __name__ == '__main__':
+    # generate key sizes from 2 to 40
     key_range = [x for x in xrange(2,41)]
+    distances = []
     with open('level6.txt', 'r') as file:
-        data = file.read()
+        data = file.read().replace('\n', '')
         decoded_data = data.decode('base64')
         # sum = calculateHammingDistance('this is a test', 'wokka wokka!!!')
         # print sum
-
+        for key in key_range:
+            # calc and store the distances for each key
+            str1 = data[0: key]
+            str2 = data[key: 2 * key]
+            distances.append((calculateHammingDistance(str1, str2)) / float(key))
+        potential_indices = []
+        # take the 3 lowest hamming distance causing keys
+        for x in range(0, 3):
+            index = distances.index(min(distances))
+            distances.remove(distances[index])
+            potential_indices.append(index)
+        index = potential_indices[0]
+        key = key_range[index]
+        print index, key
+        wordList = []
+        for x in xrange(0, len(data), key):
+            wordList.append(data[x : x+key])
+        print wordList
     breakRepeatingKeyXOR()
