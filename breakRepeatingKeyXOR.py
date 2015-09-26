@@ -10,17 +10,16 @@ def transpose(word_list, key):
     # all the first letters would be encrypted with the same key.
     # So lets try and make this a 1 xor cipher.
     for word in wordList:
-        bin_str1  = ''.join('{0:08b}'.format(ord(x)) for x in word)
+        bin_str1  = ''.join('{0:8}'.format(ord(x), 'b') for x in word)
+        #print bin_str1
         # take the first byte
         transposed_list += [bin_str1[0:8]]
     new_transposed_list = []
     for word in transposed_list:
-        # convert back from binary and get the hex values
-        new_transposed_list.append((chr(int(word, 2))))
-    print new_transposed_list
+        # convert back from and get the hex values
+        new_transposed_list.append((chr(int(word))))
     transposed_string = ''.join(new_transposed_list)
-    print transposed_string.decode()
-    xor_key = singleByteXOR(transposed_string)
+    xor_key = singleByteXOR(transposed_string.encode('hex'))
     print xor_key
 
 
