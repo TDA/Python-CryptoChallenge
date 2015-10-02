@@ -15,7 +15,7 @@ def fixedXOR(a, b):
         # xor
         c_bytearray[x] = a_bytearray[x] ^ b_byteaaray[x]
     # decode bytes to string, and then encode back to hex
-    # print c_bytearray
+    print c_bytearray
     c = (c_bytearray).decode('utf-8').encode('hex')
 
     return c

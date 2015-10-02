@@ -36,5 +36,5 @@ def singleByteXOR(a):
 
 
 if __name__ == '__main__':
-    key = singleByteXOR('1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736')
+    key = singleByteXOR("EOY XF, AY VMU M UKFNY TOY YF UFWHYKAXZ EAZZHN. UFWHYKAXZ ZNMXPHN. UFWHYKAXZ EHMOYACOI. VH'JH EHHX CFTOUHP FX VKMY'U AX CNFXY FC OU. EOY VH KMJHX'Y EHHX IFFQAXZ MY VKMY'U MEFJH OU.".lower().encode('hex'))
     print key, "is the key"
